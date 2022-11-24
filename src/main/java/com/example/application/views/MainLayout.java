@@ -99,7 +99,7 @@ public class MainLayout extends AppLayout {
         return new MenuItemInfo[]{ //
                 new MenuItemInfo("Packages", "la la-globe", PackagesView.class), //
 
-                new MenuItemInfo("About", "la la-file", AboutView.class), //
+                new MenuItemInfo("Centers", "la la-file", AboutView.class), //
 
         };
     }

@@ -8,9 +8,9 @@ public class Package extends AbstractEntity{
     @NotEmpty
     private String hexCode;
     @NotEmpty
-    private String startingPoint;
+    private Center startingPoint;
     @NotEmpty
-    private String deliveryPoint;
+    private Center deliveryPoint;
     @NotEmpty
     private Integer waitingTime;
 
@@ -29,19 +29,19 @@ public class Package extends AbstractEntity{
         this.hexCode = hexCode;
     }
 
-    public String getStartingPoint() {
+    public Center getStartingPoint() {
         return startingPoint;
     }
 
-    public void setStartingPoint(String startingPoint) {
+    public void setStartingPoint(Center startingPoint) {
         this.startingPoint = startingPoint;
     }
 
-    public String getDeliveryPoint() {
+    public Center getDeliveryPoint() {
         return deliveryPoint;
     }
 
-    public void setDeliveryPoint(String deliveryPoint) {
+    public void setDeliveryPoint(Center deliveryPoint) {
         this.deliveryPoint = deliveryPoint;
     }
 
