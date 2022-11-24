@@ -19,7 +19,7 @@ import org.hibernate.mapping.Value;
 import java.util.Collections;
 
 @PageTitle("Packages Tracker")
-@Route(value = "hello", layout = MainLayout.class)
+@Route(value = "packages", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
 public class PackagesView extends VerticalLayout {
     Grid<Package> packageGrid = new Grid<>(Package.class);
