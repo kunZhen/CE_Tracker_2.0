@@ -16,8 +16,10 @@ import com.vaadin.flow.router.RouteAlias;
 @RouteAlias(value = "", layout = MainLayout.class)
 public class PackagesView extends HorizontalLayout {
 
-
+    TextField filterText = new TextField();
     public PackagesView() {
+        add(filterText);
+
 
     }
 
