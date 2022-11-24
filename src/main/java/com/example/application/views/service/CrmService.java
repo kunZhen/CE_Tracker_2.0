@@ -20,9 +20,9 @@ public class CrmService {
 
     public List<Package> finAllPackages(String filterText) {
         if (filterText == null || filterText.isEmpty()) {
-            return null;
+            return packageRepository.findAll();
         } else{
-            return null;
+            return packageRepository.search(filterText);
         }
     }
 }
