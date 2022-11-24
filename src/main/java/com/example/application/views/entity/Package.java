@@ -1,8 +1,10 @@
 package com.example.application.views.entity;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 
-public class Package {
+@Entity
+public class Package extends AbstractEntity{
     @NotEmpty
     private String hexCode;
     @NotEmpty
@@ -12,12 +14,12 @@ public class Package {
     @NotEmpty
     private Integer waitingTime;
 
-    public Package(String hexCode, String startingPoint, String deliveryPoint) {
+    /*public Package(String hexCode, String startingPoint, String deliveryPoint) {
         this.hexCode = hexCode;
         this.startingPoint = startingPoint;
         this.deliveryPoint = deliveryPoint;
         this.waitingTime = null;
-    }
+    }*/
 
     public String getHexCode() {
         return hexCode;
