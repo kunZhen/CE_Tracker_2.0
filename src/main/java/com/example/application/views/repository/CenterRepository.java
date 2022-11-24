@@ -1,4 +1,7 @@
 package com.example.application.views.repository;
 
-public interface CenterRepository {
+import com.example.application.views.entity.Center;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CenterRepository extends JpaRepository<Center, Integer> {
 }
