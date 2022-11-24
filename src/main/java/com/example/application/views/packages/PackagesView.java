@@ -16,12 +16,15 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import org.hibernate.mapping.Value;
 
+import java.util.Collections;
+
 @PageTitle("Packages Tracker")
 @Route(value = "hello", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
 public class PackagesView extends VerticalLayout {
     Grid<Package> packageGrid = new Grid<>(Package.class);
     TextField filterText = new TextField();
+    PackageForm packageForm;
 
 
     public PackagesView() {
@@ -29,9 +32,25 @@ public class PackagesView extends VerticalLayout {
         setSizeFull();
 
         configurePackageGrid();
+        configurePackageForm();
 
-        add(getToolbar(), packageGrid);
+        add(getToolbar(), getContent());
 
+    }
+
+    private Component getContent() {
+        HorizontalLayout content = new HorizontalLayout(packageGrid, packageForm);
+        content.setFlexGrow(2, packageGrid);
+        content.setFlexGrow(1, packageForm);
+        content.addClassName("content");
+        content.setSizeFull();
+
+        return content;
+    }
+
+    private void configurePackageForm() {
+        packageForm = new PackageForm(Collections.emptyList(), Collections.emptyList());
+        packageForm.setWidth("25em");
     }
 
     private Component getToolbar() {

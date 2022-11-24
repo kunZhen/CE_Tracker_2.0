@@ -1,4 +1,4 @@
-package com.example.application.views.structures;
+package com.example.application.views.entity;
 
 import java.util.Random;
 

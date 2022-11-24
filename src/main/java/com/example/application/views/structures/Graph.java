@@ -1,5 +1,7 @@
 package com.example.application.views.structures;
 
+import com.example.application.views.entity.Center;
+
 import java.util.Random;
 
 public class Graph {
