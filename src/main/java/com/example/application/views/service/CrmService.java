@@ -25,4 +25,26 @@ public class CrmService {
             return packageRepository.search(filterText);
         }
     }
+
+    public long countPackages() {
+        return packageRepository.count();
+    }
+
+    public void deletePackage(Package packageDeleted) {
+        packageRepository.delete(packageDeleted);
+    }
+
+    public void savePackage(Package packageToSave) {
+        if (packageToSave == null) {
+            System.err.println("Package is null");
+            return;
+        }
+
+        packageRepository.save(packageToSave);
+    }
+
+    public List<Center> findAllCenters() {
+        return centerRepository.findAll();
+    }
+
 }
