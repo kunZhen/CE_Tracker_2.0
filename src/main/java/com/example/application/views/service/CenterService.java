@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Service
 public class CenterService {
     private final CenterRepository centerRepository;
 
