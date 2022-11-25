@@ -7,6 +7,7 @@ import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * The entry point of the Spring Boot application.
@@ -15,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * and some desktop browsers.
  *
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @Theme(value = "cetracker", variant = Lumo.DARK)
 @PWA(name = "CE_Tracker", shortName = "CE_Tracker", offlineResources = {})
 @NpmPackage(value = "line-awesome", version = "1.3.0")

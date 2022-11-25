@@ -8,9 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Package{
-
-    @Id
+public class Package extends AbstractEntity{
     @NotEmpty
     private String hexCode;
     @ManyToOne

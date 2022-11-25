@@ -7,6 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface CenterRepository extends JpaRepository<Center, String> {
+public interface CenterRepository extends JpaRepository<Center, Integer> {
+
+    @Query("select c from Package c" +
+            "where lower(c.name) like lower(concat('%', :searchTerm, '%')) ")
+    List<Center> search(@Param("searchTerm") String searchTerm);
 
 }

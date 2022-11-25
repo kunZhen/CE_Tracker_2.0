@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PackageRepository extends JpaRepository<Package, String>{
+public interface PackageRepository extends JpaRepository<Package, Integer>{
     @Query("select p from Package p" +
             "where lower(p.hexCode) like lower(concat('%', :searchTerm, '%')) ")
     List<Package> search(@Param("searchTerm") String searchTerm);

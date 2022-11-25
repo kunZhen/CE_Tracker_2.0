@@ -2,14 +2,17 @@ package com.example.application.views.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Random;
 
 @Entity
-public class Center{
+public class Center extends AbstractEntity{
 
-    @Id
-    private String name;
+    @NotEmpty
+    private String name = "";
 
+    @NotNull
     private boolean distributes;
 
     public Center() {
@@ -27,6 +30,6 @@ public class Center{
     }
 
     public boolean isDistributes() {
-        return distributes;
+        return true;
     }
 }
