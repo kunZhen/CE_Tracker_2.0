@@ -59,22 +59,28 @@ public class PackageForm extends FormLayout {
      * Generate hexadecimal code
      * */
     //url: https://es.stackoverflow.com/questions/526185/como-g%C3%A9nero-n%C3%BAmeros-aleatorios-en-formato-octal-y-hexadecimal#:~:text=Los%20n%C3%BAmeros%20en%20formato%20octal,luego%20los%20m%C3%A9todos%20est%C3%A1ticos%20Integer.
-    private String generateHexCode() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(255);
-        var hex = Integer.toHexString(randomNumber);
+    private String generateHexCode(Integer decimalCode) {
+        var hex = Integer.toHexString(decimalCode);
 
         //notify the hexCode created
-        Notification.show("randomNumber: " + randomNumber);
+        Notification.show("randomNumber: " + decimalCode);
         Notification.show("Package Hex Code: " + hex);
 
         if (hexCodeList.inList(hex)) {
-            return generateHexCode();
+            return generateHexCode(generateRandomCode());
         } else{
             hexCodeList.add(hex);
             return hex;
         }
     }
+
+    private Integer generateRandomCode() {
+        Random random = new Random();
+        int randomNumber = random.nextInt(255);
+
+        return randomNumber;
+    }
+
 
     /**
      * send the package
@@ -84,15 +90,20 @@ public class PackageForm extends FormLayout {
             Notification.show("Select starting point and delivery point");
         } else{
 
+            Integer decimalCode = generateRandomCode();
+            String hexCode = generateHexCode(decimalCode);
+
+
             Package packageOnway;
-            packageOnway = new Package(generateHexCode(), startingPoint.getValue(), deliveryPoint.getValue());
+            packageOnway = new Package(hexCode, startingPoint.getValue(), deliveryPoint.getValue());
             //listView.getPackagesOnWayList().add(packageOnWay);
-            //listView.updateDeliverGrid();
+                //listView.updateDeliverGrid();
 
             Notification.show("Package on way! " + "\nHexCode: " + packageOnway.getHexCode() + "    StartingPoint: " + packageOnway.getStartingPoint().getName()
-                    + "     DeliveryPoint: " + packageOnway.getDeliveryPoint().getName());
+                        + "     DeliveryPoint: " + packageOnway.getDeliveryPoint().getName());
 
             cancelPackage();
-        }
+            }
+
     }
 }
