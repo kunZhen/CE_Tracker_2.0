@@ -1,7 +1,8 @@
 package com.example.application.views;
 
 
-import com.example.application.views.about.About;
+import com.example.application.views.about.AboutView;
+import com.example.application.views.distributionCenters.DistributionCentersView;
 import com.example.application.views.packages.PackagesView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -99,7 +100,11 @@ public class MainLayout extends AppLayout {
         return new MenuItemInfo[]{ //
                 new MenuItemInfo("Packages", "la la-globe", PackagesView.class), //
 
-                new MenuItemInfo("Centers", "la la-file", About.class), //
+                new MenuItemInfo("Distribution Centers", "la la-file", DistributionCentersView.class), //
+
+                new MenuItemInfo("AboutView", "la la-file", AboutView.class), //
+
+
 
         };
     }
