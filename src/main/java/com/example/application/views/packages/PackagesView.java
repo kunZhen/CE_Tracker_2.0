@@ -3,7 +3,6 @@ package com.example.application.views.packages;
 import com.example.application.views.MainLayout;
 import com.example.application.views.entity.Center;
 import com.example.application.views.entity.Package;
-import com.example.application.views.repository.CentersRepository;
 import com.example.application.views.structures.Graph;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
@@ -31,7 +30,6 @@ public class PackagesView extends VerticalLayout {
 
     Graph map = graph.randomGraph();
     RadioButtonGroup<String> deliveryRoutes = new RadioButtonGroup<>();
-
 
     public PackagesView() {
 
