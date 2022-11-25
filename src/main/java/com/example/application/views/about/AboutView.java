@@ -15,9 +15,9 @@ public class AboutView extends VerticalLayout {
 
     public AboutView() {
 
-        add(new H1("Desarrolladores"));
+        add(new H1("Developers"));
         add(new H2("Marco Villatoro, Michael Suarez, Monica Granados  & Kun Zheng"));
-        add(new Paragraph("Agradecimientos a Noguera <3     -     CE1103.2022.2"));
+        add(new Paragraph("Thanks to Noguera <3     -     CE1103.2022.2"));
 
         setSpacing(false);
 
