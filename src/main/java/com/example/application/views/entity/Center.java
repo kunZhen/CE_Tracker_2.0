@@ -1,12 +1,19 @@
 package com.example.application.views.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Random;
 
-public class Center {
+@Entity
+public class Center{
 
+    @Id
     private String name;
 
     private boolean distributes;
+
+    public Center() {
+    }
 
     public Center(String name){
         Random random = new Random();

@@ -1,15 +1,25 @@
 package com.example.application.views.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Package extends AbstractEntity{
+public class Package{
+
+    @Id
     @NotEmpty
     private String hexCode;
-    @NotEmpty
+    @ManyToOne
+    @JoinColumn(name = "starting_point_id")
+    @NotNull
     private Center startingPoint;
-    @NotEmpty
+    @ManyToOne
+    @JoinColumn(name = "delivery_point_id")
+    @NotNull
     private Center deliveryPoint;
     @NotEmpty
     private Integer waitingTime;

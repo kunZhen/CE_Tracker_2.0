@@ -3,10 +3,8 @@ package com.example.application.views.packages;
 import com.example.application.views.MainLayout;
 import com.example.application.views.entity.Package;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -14,9 +12,6 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import org.hibernate.mapping.Value;
-
-import java.util.Collections;
 
 @PageTitle("Packages Tracker")
 @Route(value = "packages", layout = MainLayout.class)
@@ -28,6 +23,7 @@ public class PackagesView extends VerticalLayout {
 
 
     public PackagesView() {
+
         addClassName("list-view");
         setSizeFull();
 
@@ -35,8 +31,13 @@ public class PackagesView extends VerticalLayout {
         configurePackageForm();
 
         add(getToolbar(), getContent());
-
+        
+        //updateList();
     }
+
+    /*private void updateList() {
+        packageGrid.setItems(service.finAllPackages(filterText.getValue()));
+    }*/
 
     private Component getContent() {
         HorizontalLayout content = new HorizontalLayout(packageGrid, packageForm);
@@ -49,7 +50,7 @@ public class PackagesView extends VerticalLayout {
     }
 
     private void configurePackageForm() {
-        packageForm = new PackageForm(Collections.emptyList(), Collections.emptyList());
+        packageForm = new PackageForm();
         packageForm.setWidth("25em");
     }
 
@@ -57,6 +58,7 @@ public class PackagesView extends VerticalLayout {
         filterText.setPlaceholder("Filter by Hex Code...");
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
+        //filterText.addValueChangeListener(e -> updateList());
 
         Button addPackageButton = new Button("Add package");
 
