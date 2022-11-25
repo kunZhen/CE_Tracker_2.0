@@ -66,7 +66,9 @@ public class  Graph {
         }
         return map;
     }
-
+    /**
+     * Get the only Distribution Center
+     * */
     public void matchCenters() {
         setCenters(new Center[vertices.length]);
 
@@ -74,16 +76,23 @@ public class  Graph {
             centers[i] = new Center("Ciudad " + i);
         }
     }
-
+    /**
+     * class vertex
+     * */
     static class Vertex {
         int id;
         Center center;
         LinkList adjacency = new LinkList();
-
+        int weight;
+        /**
+         * It's a constructor of vertex class
+         */
         public Vertex(int id) {
             this.id = id;
         }
-
+        /**
+         * add edge
+         */
         public void addEdge(Edge edge) {
             adjacency.add(edge);
         }
@@ -96,12 +105,16 @@ public class  Graph {
          * */
         public int getId() {return id;}
     }
-
+    /**
+     * edge class
+     * */
     static class Edge {
         int start;
         int end;
         int weight;
-
+        /**
+         * It's a constructor of edge class
+         */
         public Edge(int start, int end, int weight) {
             this.start = start;
             this.end = end;
