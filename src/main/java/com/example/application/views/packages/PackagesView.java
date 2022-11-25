@@ -30,6 +30,7 @@ public class PackagesView extends VerticalLayout {
 
     Graph map = graph.randomGraph();
     RadioButtonGroup<String> deliveryRoutes = new RadioButtonGroup<>();
+    DistributionCenterForm editCenterForm;
 
     public PackagesView() {
 
@@ -40,11 +41,13 @@ public class PackagesView extends VerticalLayout {
 
         configurePackageGrid();
         configurePackageForm(getCenters());
+        configureEditCenterForm(getCenters());
         configureDeliveryRoutes();
 
         add(getToolbar(), getContent(), deliveryRoutes);
 
         packageForm.setVisible(false);
+        editCenterForm.setVisible(false);
         //updateList();
     }
 
@@ -70,13 +73,19 @@ public class PackagesView extends VerticalLayout {
     }*/
 
     private Component getContent() {
-        HorizontalLayout content = new HorizontalLayout(packageGrid, packageForm);
+        HorizontalLayout content = new HorizontalLayout(packageGrid, packageForm, editCenterForm);
         content.setFlexGrow(2, packageGrid);
         content.setFlexGrow(1, packageForm);
+        content.setFlexGrow(1, editCenterForm);
         content.addClassName("content");
         content.setSizeFull();
 
         return content;
+    }
+
+    private void configureEditCenterForm(LinkedList<Center> centersList) {
+        editCenterForm = new DistributionCenterForm(centersList);
+        editCenterForm.setWidth("25em");
     }
 
     private void configurePackageForm(LinkedList<Center> centerList) {
@@ -93,9 +102,22 @@ public class PackagesView extends VerticalLayout {
         Button addPackageButton = new Button("Add package");
         addPackageButton.addClickListener(click -> addPackage());
 
-        HorizontalLayout toolbar = new HorizontalLayout(filterText, addPackageButton);
+        Button editDistributionCenter = new Button("Edit distributions centers");
+        editDistributionCenter.addClickListener(click -> editDistributionCenter());
+
+        HorizontalLayout toolbar = new HorizontalLayout(filterText, addPackageButton, editDistributionCenter);
         toolbar.addClassName("toolbar");
         return toolbar;
+    }
+
+    private void editDistributionCenter() {
+        if(editCenterForm.isVisible()) {
+            editCenterForm.setVisible(false);
+            removeClassName("Editing");
+        } else{
+            editCenterForm.setVisible(true);
+            addClassName("Editing");
+        }
     }
 
     private void addPackage() {
