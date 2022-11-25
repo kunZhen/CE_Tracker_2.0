@@ -10,12 +10,12 @@ import com.vaadin.flow.router.Route;
 
 @PageTitle("Distribution centers")
 @Route(value = "centers", layout = MainLayout.class)
-public class DistributionCenters extends VerticalLayout {
+public class About extends VerticalLayout {
     Button editCentersButton = new Button("Edit Centers");
     Grid<Center> centersToEditGrid = new Grid<>();
 
 
-    public DistributionCenters() {
+    public About() {
 
         editCentersButton.addClickListener(click -> editCenters());
 
