@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Entity
+
 public class Package extends AbstractEntity{
     @NotEmpty
     private String hexCode;
@@ -22,12 +22,12 @@ public class Package extends AbstractEntity{
     @NotEmpty
     private Integer waitingTime;
 
-    /*public Package(String hexCode, String startingPoint, String deliveryPoint) {
+    public Package(String hexCode, Center startingPoint, Center deliveryPoint) {
         this.hexCode = hexCode;
         this.startingPoint = startingPoint;
         this.deliveryPoint = deliveryPoint;
         this.waitingTime = null;
-    }*/
+    }
 
     public String getHexCode() {
         return hexCode;
