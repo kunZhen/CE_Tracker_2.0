@@ -15,20 +15,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PackageForm extends FormLayout {
-    LinkedList<Center> centersList = new LinkedList<>();
     ComboBox<Center> startingPoint = new ComboBox<>("Starting point");
     ComboBox<Center> deliveryPoint = new ComboBox<>("Delivery point");
 
     Button send = new Button("Send");
     Button cancel = new Button("Cancel");
 
-    public PackageForm() {
+    public PackageForm(LinkedList<Center> centerList) {
         addClassName("package-form");
 
-        startingPoint.setItems(centersList);
+        startingPoint.setItems(centerList);
         startingPoint.setItemLabelGenerator(Center::getName);
 
-        deliveryPoint.setItems(centersList);
+        deliveryPoint.setItems(centerList);
         deliveryPoint.setItemLabelGenerator(Center::getName);
 
         add(startingPoint, deliveryPoint, createButtonLayout());
@@ -41,13 +40,5 @@ public class PackageForm extends FormLayout {
         send.addClickShortcut(Key.ENTER);
 
         return new HorizontalLayout(send, cancel);
-    }
-
-    public LinkedList<Center> getCentersList() {
-        return centersList;
-    }
-
-    public void setCentersList(LinkedList<Center> centersList) {
-        this.centersList = centersList;
     }
 }

@@ -1,17 +1,24 @@
 package com.example.application.views.packages;
 
 import com.example.application.views.MainLayout;
+import com.example.application.views.entity.Center;
 import com.example.application.views.entity.Package;
+import com.example.application.views.repository.CentersRepository;
+import com.example.application.views.structures.Graph;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+
+import java.util.LinkedList;
 
 @PageTitle("Packages Tracker")
 @Route(value = "packages", layout = MainLayout.class)
@@ -20,6 +27,10 @@ public class PackagesView extends VerticalLayout {
     Grid<Package> packageGrid = new Grid<>(Package.class);
     TextField filterText = new TextField();
     PackageForm packageForm;
+    Graph graph = new Graph();
+
+    Graph map = graph.randomGraph();
+    RadioButtonGroup<String> deliveryRoutes = new RadioButtonGroup<>();
 
 
     public PackagesView() {
@@ -27,12 +38,33 @@ public class PackagesView extends VerticalLayout {
         addClassName("list-view");
         setSizeFull();
 
-        configurePackageGrid();
-        configurePackageForm();
+        map.matchCenters();
 
-        add(getToolbar(), getContent());
-        
+        configurePackageGrid();
+        configurePackageForm(getCenters());
+        configureDeliveryRoutes();
+
+        add(getToolbar(), getContent(), deliveryRoutes);
+
+        packageForm.setVisible(false);
         //updateList();
+    }
+
+    private void configureDeliveryRoutes() {
+        deliveryRoutes.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
+        deliveryRoutes.setLabel("Delivery routes");
+        deliveryRoutes.setItems("Puerto Rico", "Guyana Francesa", "Monzambique");
+    }
+
+    private LinkedList<Center> getCenters() {
+        LinkedList<Center> centersList = new LinkedList<>();
+
+        for(int i = 0; i < (map.getCenters().length); i++){
+            if (map.getCenters()[i].isDistributes()) {
+                centersList.add(map.getCenters()[i]);
+            }
+        }
+        return centersList;
     }
 
     /*private void updateList() {
@@ -49,8 +81,8 @@ public class PackagesView extends VerticalLayout {
         return content;
     }
 
-    private void configurePackageForm() {
-        packageForm = new PackageForm();
+    private void configurePackageForm(LinkedList<Center> centerList) {
+        packageForm = new PackageForm(centerList);
         packageForm.setWidth("25em");
     }
 
@@ -61,10 +93,19 @@ public class PackagesView extends VerticalLayout {
         //filterText.addValueChangeListener(e -> updateList());
 
         Button addPackageButton = new Button("Add package");
+        addPackageButton.addClickListener(click -> addPackage());
 
         HorizontalLayout toolbar = new HorizontalLayout(filterText, addPackageButton);
         toolbar.addClassName("toolbar");
         return toolbar;
+    }
+
+    private void addPackage() {
+        if (packageForm.isVisible()) {
+            packageForm.setVisible(false);
+        } else{
+            packageForm.setVisible(true);
+        }
     }
 
     private void configurePackageGrid() {

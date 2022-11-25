@@ -1,6 +1,7 @@
 package com.example.application.views.structures;
 
 import com.example.application.views.entity.Center;
+import com.example.application.views.structures.LinkList;
 
 import java.util.Random;
 
