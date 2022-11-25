@@ -52,8 +52,8 @@ public class PackagesView extends VerticalLayout {
 
     private void configureDeliveryRoutes() {
         deliveryRoutes.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
-        deliveryRoutes.setLabel("Delivery routes");
-        deliveryRoutes.setItems("Puerto Rico", "Guyana Francesa", "Monzambique");
+        deliveryRoutes.setLabel("Delivery routes - Costs");
+        deliveryRoutes.setItems("Puerto Rico $60", "Guyana Francesa $20", "Monzambique $150");
     }
 
     private LinkedList<Center> getCenters() {

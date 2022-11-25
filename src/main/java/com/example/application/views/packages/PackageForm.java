@@ -43,11 +43,17 @@ public class PackageForm extends FormLayout {
         cancel.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
         send.addClickListener(event -> sendPackage());
+        cancel.addClickListener(event -> cancelPackage());
+
         send.addClickShortcut(Key.ENTER);
 
         return new HorizontalLayout(send, cancel);
     }
 
+    private void cancelPackage() {
+        startingPoint.clear();
+        deliveryPoint.clear();
+    }
 
 
     //url: https://es.stackoverflow.com/questions/526185/como-g%C3%A9nero-n%C3%BAmeros-aleatorios-en-formato-octal-y-hexadecimal#:~:text=Los%20n%C3%BAmeros%20en%20formato%20octal,luego%20los%20m%C3%A9todos%20est%C3%A1ticos%20Integer.
@@ -58,7 +64,7 @@ public class PackageForm extends FormLayout {
 
         //notify the hexCode created
         Notification.show("randomNumber: " + randomNumber);
-        Notification.show("hex: " + hex);
+        Notification.show("Package Hex Code: " + hex);
 
         if (hexCodeList.inList(hex)) {
             return generateHexCode();
@@ -71,13 +77,16 @@ public class PackageForm extends FormLayout {
         if (startingPoint.isEmpty() || deliveryPoint.isEmpty()) {
             Notification.show("Select starting point and delivery point");
         } else{
+
             Package packageOnway;
             packageOnway = new Package(generateHexCode(), startingPoint.getValue(), deliveryPoint.getValue());
             //listView.getPackagesOnWayList().add(packageOnWay);
             //listView.updateDeliverGrid();
 
-            Notification.show("Package on way! " + "HexCode: " + packageOnway.getHexCode() + " StartingPoint: " + packageOnway.getStartingPoint().getName()
-                    + " DeliveryPoint: " + packageOnway.getDeliveryPoint().getName());
+            Notification.show("Package on way! " + "\nHexCode: " + packageOnway.getHexCode() + "    StartingPoint: " + packageOnway.getStartingPoint().getName()
+                    + "     DeliveryPoint: " + packageOnway.getDeliveryPoint().getName());
+
+            cancelPackage();
         }
     }
 }
