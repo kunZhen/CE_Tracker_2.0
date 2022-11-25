@@ -9,6 +9,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+/**
+ * It's a view that display a title, subtittle, a paragraph and a image
+ */
 @PageTitle("about")
 @Route(value = "about", layout = MainLayout.class)
 public class AboutView extends VerticalLayout {

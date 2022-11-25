@@ -8,6 +8,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+
+/**
+ * It's a view that display the distribution centers
+ */
 @PageTitle("Distribution centers")
 @Route(value = "distributionCenters", layout = MainLayout.class)
 public class DistributionCentersView extends VerticalLayout {

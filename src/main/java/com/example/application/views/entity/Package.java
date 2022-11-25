@@ -8,6 +8,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
+/**
+ * The Package class represents each of the packages that are send by the user
+ */
 public class Package extends AbstractEntity{
     @NotEmpty
     private String hexCode;
@@ -22,6 +25,12 @@ public class Package extends AbstractEntity{
     @NotEmpty
     private Integer waitingTime;
 
+    /**
+     * It's a constructor for the package
+     * @param hexCode hexadecimal code of the package
+     * @param startingPoint center starting Point
+     * @param deliveryPoint center delivery Point
+     */
     public Package(String hexCode, Center startingPoint, Center deliveryPoint) {
         this.hexCode = hexCode;
         this.startingPoint = startingPoint;
@@ -29,6 +38,10 @@ public class Package extends AbstractEntity{
         this.waitingTime = null;
     }
 
+    /**
+     * Gets the hexadecimal code of the package
+     * @return hexadecimal code
+     */
     public String getHexCode() {
         return hexCode;
     }
