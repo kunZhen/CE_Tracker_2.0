@@ -102,7 +102,7 @@ public class MainLayout extends AppLayout {
 
                 new MenuItemInfo("Distribution Centers", "la la-file", DistributionCentersView.class), //
 
-                new MenuItemInfo("AboutView", "la la-file", AboutView.class), //
+                new MenuItemInfo("About", "la la-file", AboutView.class), //
 
 
 

@@ -4,6 +4,7 @@ import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -16,6 +17,7 @@ public class AboutView extends VerticalLayout {
 
         add(new H1("Desarrolladores"));
         add(new H2("Marco Villatoro, Michael Suarez, Monica Granados  & Kun Zheng"));
+        add(new Paragraph("Agradecimientos a Noguera <3     -     CE1103.2022.2"));
 
         setSpacing(false);
 
