@@ -42,6 +42,8 @@ public class Package extends AbstractEntity{
      * Gets the hexadecimal code of the package
      * @return hexadecimal code
      */
+
+
     public String getHexCode() {
         return hexCode;
     }
@@ -50,6 +52,10 @@ public class Package extends AbstractEntity{
         this.hexCode = hexCode;
     }
 
+    /**
+     * Gets startingPoint of the package
+     * @return startingPoint
+     */
     public Center getStartingPoint() {
         return startingPoint;
     }
@@ -58,6 +64,10 @@ public class Package extends AbstractEntity{
         this.startingPoint = startingPoint;
     }
 
+    /**
+     * Gets DeliveryPoint of the package
+     * @return DeliveryPoint
+     * */
     public Center getDeliveryPoint() {
         return deliveryPoint;
     }

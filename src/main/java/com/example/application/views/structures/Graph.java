@@ -5,11 +5,14 @@ import com.example.application.views.structures.LinkList;
 
 import java.util.Random;
 
-public class Graph {
+public class  Graph {
     private Vertex[] vertices;
 
     private Center[] centers;
 
+    /**
+     * It's a constructor
+     */
     public Graph() {}
 
     public Graph(int a) {
@@ -21,8 +24,15 @@ public class Graph {
     }
 
     public Vertex[] getVertices() {return vertices;}
-
+    /**
+     * Gets centers
+     * @return centers
+     * */
     public Center[] getCenters() {return centers;}
+
+    /**
+     * Set  the centers
+     * */
     public void setCenters(Center[] centers) {this.centers = centers;}
     public void showCenters(){
         for (Center center : centers) {
@@ -35,6 +45,9 @@ public class Graph {
         vertices[start].addEdge(edge);
     }
 
+    /**
+     * Generate a random graph
+     */
     public Graph randomGraph(){
         Random random = new Random();
         int graphSize = random.nextInt(20);
@@ -77,6 +90,10 @@ public class Graph {
 
         public Center getCenter() {return center;}
         public LinkList getAdjacency() {return adjacency;}
+        /**
+         * Gets id of the package
+         * @return id
+         * */
         public int getId() {return id;}
     }
 

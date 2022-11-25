@@ -2,6 +2,11 @@ package com.example.application.views.structures;
 
 public class Stack {
     private LinkList list;
+
+
+    /**
+     * It's a constructor
+     */
     public Stack() {
     }
 

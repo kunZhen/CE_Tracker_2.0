@@ -55,7 +55,9 @@ public class PackageForm extends FormLayout {
         deliveryPoint.clear();
     }
 
-
+    /**
+     * Generate hexadecimal code
+     * */
     //url: https://es.stackoverflow.com/questions/526185/como-g%C3%A9nero-n%C3%BAmeros-aleatorios-en-formato-octal-y-hexadecimal#:~:text=Los%20n%C3%BAmeros%20en%20formato%20octal,luego%20los%20m%C3%A9todos%20est%C3%A1ticos%20Integer.
     private String generateHexCode() {
         Random random = new Random();
@@ -73,6 +75,10 @@ public class PackageForm extends FormLayout {
             return hex;
         }
     }
+
+    /**
+     * send the package
+     * */
     private void sendPackage() {
         if (startingPoint.isEmpty() || deliveryPoint.isEmpty()) {
             Notification.show("Select starting point and delivery point");

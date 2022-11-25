@@ -27,7 +27,9 @@ public class DistributionCenterForm extends FormLayout {
 
         add(centersComboBox, name, createButtonLayout());
     }
-
+    /**
+     * Create the buttons in the web page
+     * */
     private Component createButtonLayout() {
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         close.addThemeVariants(ButtonVariant.LUMO_ERROR);
@@ -38,7 +40,9 @@ public class DistributionCenterForm extends FormLayout {
 
         return new HorizontalLayout(save, close);
     }
-
+    /**
+     * Save the distribution center
+     * */
     private void saveDistributionCenter() {
         if(centersComboBox.isEmpty() || name.isEmpty()) {
             Notification.show("Select distribution center and new name center");

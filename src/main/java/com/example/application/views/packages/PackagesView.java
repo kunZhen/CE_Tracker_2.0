@@ -56,7 +56,9 @@ public class PackagesView extends VerticalLayout {
         deliveryRoutes.setLabel("Delivery routes - Costs");
         deliveryRoutes.setItems("Puerto Rico $60", "Guyana Francesa $20", "Monzambique $150");
     }
-
+    /**
+     * Get the only Distribution Center
+     * */
     private LinkedList<Center> getCenters() {
         LinkedList<Center> centersList = new LinkedList<>();
 
